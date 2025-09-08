@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Prep Page Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="popup.css" />
+  <link rel="icon" href="icons/icon32.png" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img class="logo" src="icons/icon32.png" width="22" height="22" alt="Prep Tracker" />
+      <h1>Prep Tracker</h1>
+      <button id="openInTab" class="open-tab" title="Open full page">Open Full Page</button>
+    </div>
+  </header>
+
+  <section class="add-current">
+    <div class="row inline">
+      <input id="nameInput" type="text" placeholder="Custom name for this page…" />
+      <input id="tagsInput" type="text" placeholder="tags: performance, react, system-design" />
+    </div>
+    <div class="row">
+      <div class="tag-suggestions-wrap">
+        <div class="sugg-title">Suggested tags</div>
+        <div id="tagSuggestions" class="tag-suggestions" aria-label="Existing tags"></div>
+      </div>
+    </div>
+    <div class="row">
+      <button id="saveCurrent">Track Current Page</button>
+      <button id="openAll" title="Open all Not Started / In Progress">Open All</button>
+    </div>
+  </section>
+
+  <div class="divider" role="separator" aria-label="Tracked items divider"></div>
+
+  <section class="filters">
+    <select id="statusFilter" title="Status filter">
+      <option value="all">All</option>
+      <option value="todo">Not Started</option>
+      <option value="in-progress">In Progress</option>
+      <option value="done">Done</option>
+    </select>
+
+    <select id="sortBy" title="Sort">
+      <option value="updatedDesc">Recently Updated</option>
+      <option value="createdDesc">Recently Added</option>
+      <option value="starredFirst">Starred First</option>
+      <option value="nameAsc">Name A→Z</option>
+    </select>
+
+    <input id="search" type="search" placeholder="Search name or URL…" />
+  </section>
+
+  <div class="divider" role="separator" aria-label="Tracked items divider"></div>
+
+  <section class="filters">
+    <input id="tagFilter" type="search" placeholder="Filter by tag(s): e.g. react,perf" />
+    <button id="clearTagFilter" class="muted">Clear Tags</button>
+  </section>
+
+  <section id="list" class="list"></section>
+
+  <footer>
+    <a href="#" id="exportBtn">Export</a>
+    <input type="file" id="importFile" accept="application/json" hidden />
+    <a href="#" id="importBtn">Import</a>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
