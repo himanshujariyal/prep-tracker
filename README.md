@@ -2,7 +2,9 @@
 
 🚀 **Next-generation bookmarks for learners** - A modern Chrome extension to organize your learning resources with intelligent tagging, status tracking, and advanced filtering.
 
-![Popup view](images/popup-view.png)
+<div align="center">
+  <img src="images/popup-view.png" alt="Popup view" width="400"/>
+</div>
 
 ## ✨ Key Features
 
