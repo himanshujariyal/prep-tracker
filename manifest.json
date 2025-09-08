@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Prep Page Tracker",
+  "name": "Bookmark++",
   "version": "1.3.3",
   "description": "Track reading links for job prep. Save pages with custom names, tags, star, and status. Responsive popup + full-page view.",
   "permissions": [
@@ -12,7 +12,7 @@
     "<all_urls>"
   ],
   "action": {
-    "default_title": "Prep Page Tracker",
+    "default_title": "Bookmark++",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon16.png",

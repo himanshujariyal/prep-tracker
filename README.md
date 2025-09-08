@@ -1,93 +1,197 @@
-# Prep Page Tracker (Chrome Extension)
+# Bookmark++ (Chrome Extension)
 
-A modern, enhanced Chrome exten## ⌨️ Keybo## 🔍 Data Model
-
-Each tracked item is stored under `chrome.storage.sync` as part of `trackedPages` array:
-
-```javascript
-{
-  id: "unique-id",          // Unique identifier
-  url: "https://...",       // Page URL
-  name: "Custom Name",      // Display name (user editable)
-  status: "todo",           // One of: "todo", "in-progress", "done"
-  starred: false,           // Boolean star flag
-  tags: ["tag1", "tag2"],   // Array of lowercase tag strings
-  createdAt: 1630000000000, // Timestamp when first added
-  updatedAt: 1630000000000  // Timestamp of last update
-}
-```
-
-> Your data stays in your browser profile's synced storage (subject to Chrome's sync quotas).- The popup's **Open All** opens up to 15 non‑done items at once (configurable).
-- Use **search** to match names, URLs, and tags.
-- **Tag filtering** matches all specified tags (AND logic).
-- Date tracking now shows human-readable timestamps (Today, Yesterday, etc.)to organize your job-prep reading list with improved UI and performance.
-Save the current page with a custom name, **tags**, **star** important items, and track status (**Not Started / In Progress / Done**).
-Includes a right-click **Track Page** action and a **full-page** UI option for a larger workspace.
+🚀 **Next-generation bookmarks for learners** - A modern Chrome extension to organize your learning resources with intelligent tagging, status tracking, and advanced filtering.
 
 ![Popup view](images/popup-view.png)
 
-## ✨ Enhanced Features
+## ✨ Key Features
 
-- **Modernized codebase** with ES6+, better error handling, and maintainable architecture
-- **Improved UI/UX** with animations, visual feedback, and accessibility improvements
-- **Real-time notifications** for user feedback on actions
-- **Enhanced tag system** with better suggestions and management
+### Core Functionality
+- **One-click page tracking** via popup or right-click context menu
+- **Smart status management** (Not Started → In Progress → Done)  
+- **Intelligent tagging system** with auto-suggestions from your history
+- **Advanced filtering** by status, tags, and search terms
+- **Bulk operations** - open multiple tracked pages at once
+- **Data portability** - import/export your collection as JSON
+
+### Enhanced User Experience
+- **Persistent UI state** - your filter selections are remembered
+- **Real-time notifications** for action feedback
 - **Responsive design** that adapts to different screen sizes
-- **Performance optimizations** for smoother operation
-- All original features preserved:
-  - **Track any page** via popup or right‑click **Track Page**
-  - **Custom name** + **Tags** (with **suggested tags** built from your history)
-  - **Status chips** with inline actions (⟳ cycle, ✓ done)
-  - **Star** important items
-  - **Search / Filter by status & tags / Sort**
-  - **Open All** (non‑done items)
-  - **Import / Export** your list as JSON
-  - **Full‑page view** (open the popup UI in a tab for more space)
-  - **Sync storage** (uses `chrome.storage.sync` within Chrome sync quotas)
+- **Smooth animations** and visual feedback
+- **Right-aligned action buttons** for cleaner card layout
+- **Human-readable timestamps** (Today, Yesterday, etc.)
 
-## 🚀 Technical Improvements
+### Smart Organization
+- **Tag suggestions** based on your existing collection
+- **Status workflow** with inline quick actions
+- **Star system** for marking important resources
+- **Search across** names, URLs, and tags
+- **Sort options** - recently updated, added, starred first, alphabetical
+
+## 🔧 Installation
+
+1. **Download** the latest release or clone this repository
+2. **Open Chrome** and navigate to `chrome://extensions/`
+3. **Enable Developer mode** (toggle in top-right corner)
+4. **Click "Load unpacked"** and select the extension folder
+5. **Pin the extension** to your toolbar for easy access
+
+## 📖 Quick Start
+
+### Basic Usage
+1. **Track current page**: Click extension icon → "Track Current Page"
+2. **Add tags**: Use the tags input for better organization  
+3. **Right-click tracking**: Right-click any page → "Track this page"
+4. **Manage items**: Use the card buttons to update status, edit, or delete
+
+### Power Features
+- **Open All**: Bulk open non-completed items (up to 15 tabs)
+- **Full Page Mode**: Click "Open Full Page" for expanded workspace
+- **Tag Filtering**: Click any tag to filter by that tag
+- **Status Workflow**: Use ⟳ to cycle through statuses or ✓ to mark done
+- **Quick Search**: Search across names, URLs, and tags simultaneously
+
+## 🎯 Card Layout
+
+Each tracked item displays in this clean layout:
+1. **Title** - Custom name or page title
+2. **URL** - Full page address  
+3. **Status Bar** - Current status with quick action buttons
+4. **Tags** - Clickable tags for filtering
+5. **Actions** - Right-aligned buttons (★, ↗, ✎, 🏷, 🗑)
+
+## 🔍 Data Model
+
+Each tracked item is stored as JSON in `chrome.storage.sync`:
+
+```javascript
+{
+  id: "unique-id",          // UUID or timestamp-based ID
+  url: "https://example.com", // Full page URL
+  name: "Custom Name",      // User-editable display name
+  status: "todo",           // "todo" | "in-progress" | "done"
+  starred: false,           // Boolean favorite flag
+  tags: ["react", "tutorial"], // Array of lowercase tag strings
+  createdAt: 1694476800000, // Timestamp when first tracked
+  updatedAt: 1694476800000  // Timestamp of last modification
+}
+```
+
+> 💾 **Data Storage**: Uses Chrome's sync storage - your data syncs across devices and persists across browser sessions (subject to Chrome's sync quotas).
+
+## 🚀 Technical Architecture
 
 ### Modern JavaScript Implementation
-- **ES6+ features** including classes, async/await, and arrow functions
-- **Modular architecture** with separate concerns (UI, Storage, TagManager)
-- **State management pattern** for predictable data flow
-- **Enhanced error handling** with try-catch and user feedback
-- **Debounced input handling** for better performance
+- **ES6+ features** - Classes, async/await, arrow functions, destructuring
+- **Modular design** - Separate modules for UI, Storage, TagManager, Utils
+- **State management** - Centralized app state with predictable updates
+- **Error handling** - Comprehensive try-catch blocks with user feedback
+- **Performance optimized** - Debounced inputs, document fragments, efficient DOM updates
 
 ### UI/UX Enhancements
-- **Notification system** for action feedback
-- **Loading states** and visual indicators
-- **Smooth animations** for better interactivity
-- **Improved accessibility** with ARIA attributes and keyboard navigation
-- **Responsive layout** adaptations
-- **Empty state handling** with friendly messages
+- **Notification system** - Toast messages for user feedback
+- **Loading states** - Visual indicators during operations
+- **Smooth animations** - CSS transitions and transforms
+- **Accessibility** - ARIA labels, keyboard navigation, high contrast support
+- **Responsive design** - Adapts from 380px to 720px+ widths
+- **Empty states** - Helpful messages when no items match filters
 
-### Storage & Performance
-- **Optimized storage operations** with better validation
-- **Document fragment** rendering for performance
-- **Memory management** improvements
-- **Enhanced import/export** with metadata and version tracking
+### Storage & Data Management
+- **Dual storage strategy** - Main data in sync storage, UI state in local storage
+- **Data validation** - Input sanitization and error recovery
+- **Import/Export** - JSON format with metadata and versioning
+- **Cross-tab sync** - Real-time updates via chrome.runtime messaging
+- **Backup-friendly** - Human-readable export format
 
-## 🔧 Install (Unpacked)
+## ⌨️ Keyboard & Power Tips
 
-1. Download the latest zip from releases or this repo folder.
-2. Unzip it to a local directory.
-3. Visit `chrome://extensions`, enable **Developer mode**.
-4. Click **Load unpacked** and select the unzipped folder.
-5. (Optional) Pin the extension to your toolbar.
+- **Bulk Operations**: "Open All" opens up to 15 non-completed items
+- **Smart Search**: Matches across names, URLs, and tags simultaneously
+- **Tag Logic**: Tag filtering uses AND logic (all specified tags must match)
+- **Quick Filtering**: Click any tag to instantly filter by that tag
+- **Persistent State**: All filter selections are remembered between sessions
+- **Status Shortcuts**: Use ⟳ to cycle through statuses, ✓ to mark complete
+- **Context Menu**: Right-click any page to quickly add to your collection
 
-## 📖 Usage
+## 🔧 Browser Compatibility
 
-- Click the toolbar icon to open the popup.
-- Enter a **Custom name** and **Tags** (or click from **Suggested tags**) then hit **Track Current Page**.
-- Manage your items:
-  - Click **★** to star/unstar.
-  - Use the **status chip** and inline buttons to update status.
-  - Click **Visit** / ↗ to open the link.
-  - **Rename** (✎) or **Edit tags** (🏷).
-  - Delete (🗑) — now with confirmation to prevent accidental deletion.
-- Use **Open Full Page** to open the UI in a new tab.
-- **Export** to back up, **Import** to restore on another device.
+- **Chrome 88+** (Manifest V3 support)
+- **Edge 88+** (Chromium-based)
+- **Opera 74+** (Chromium-based)
+
+## 📁 Project Structure
+
+```
+prep-tracker/
+├── manifest.json       # Extension configuration (Manifest V3)
+├── background.js       # Service worker with context menu & messaging
+├── popup.html         # Main interface markup
+├── popup.css          # Dark theme styling with CSS variables
+├── popup.js           # Enhanced frontend logic (ES6+ classes)
+├── icons/             # Extension icons (16px to 128px)
+│   ├── icon16.png
+│   ├── icon32.png
+│   ├── icon48.png
+│   └── icon128.png
+└── images/
+    └── popup-view.png # README screenshot
+```
+
+## 🔒 Permissions
+
+The extension requires these permissions:
+- **`storage`** - Save your reading list and preferences
+- **`tabs`** - Read current tab info and open tracked links
+- **`contextMenus`** - Add right-click "Track this page" option
+- **`host_permissions: <all_urls>`** - Allow tracking any website
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Extension not loading?**
+- Ensure Developer mode is enabled in `chrome://extensions`
+- Check that all files are present and properly structured
+- Look for errors in the browser console
+
+**Data not syncing?**
+- Verify Chrome sync is enabled in browser settings
+- Check extension permissions in `chrome://extensions`
+- Try export/import as a manual sync method
+
+**Performance issues?**
+- Large collections (1000+ items) may load slower
+- Consider using export/cleanup for old items
+- Restart browser if memory usage seems high
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make your changes with proper documentation
+4. Test across different browser versions
+5. Submit a pull request with a clear description
+
+### Development Guidelines
+- Follow existing ES6+ patterns and code style
+- Add JSDoc comments for new functions
+- Test UI changes across different screen sizes
+- Update README if adding new features
+
+## 📄 License
+
+MIT License - feel free to use, modify, and distribute.
+
+## 🙏 Acknowledgments
+
+- Chrome Extension APIs for powerful browser integration
+- Modern web standards for enhanced user experience
+- Open source community for inspiration and best practices
+
+---
+
+**Version 2.0** - Enhanced with modern JavaScript, improved UX, persistent UI state, and comprehensive error handling.
 
 ## Keyboard & Power Tips
 
