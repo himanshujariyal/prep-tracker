@@ -1,6 +1,6 @@
 # Prep Page Tracker (Chrome Extension)
 
-A compact, dark-themed **Manifest V3** Chrome extension to organize your job-prep reading list.
+A compact, dark-themed Chrome extension to organize your job-prep reading list.
 Save the current page with a custom name, **tags**, **star** important items, and track status (**Not Started / In Progress / Done**).
 Includes a right-click **Track Page** action and a **full-page** UI option for a larger workspace.
 
