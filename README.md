@@ -1,5 +1,7 @@
 # Bookmark++ (Chrome Extension)
 
+Download from store: https://chromewebstore.google.com/detail/ijicfkajaockoebpkgfdjoejgfiombhf
+
 🚀 **Next-generation bookmarks for learners** - A modern Chrome extension to organize your learning resources with intelligent tagging, status tracking, and advanced filtering.
 
 <div align="center">
